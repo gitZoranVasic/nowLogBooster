@@ -1,0 +1,19 @@
+{
+  "name": "nowlogbooster",
+  "version": "0.0.1",
+  "description": "A Manifest V3 browser extension that detects JSON in ServiceNow syslog “Message” cells and replaces it with a pretty-printed, foldable Monaco Editor view (with options for future customization).",
+  "main": "src/contentScript.tsx",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "servicenow",
+    "chrome-extension",
+    "manifest-v3",
+    "monaco-editor",
+    "json-viewer",
+    "syslog"
+  ],
+  "author": "Zoran Vasic",
+  "license": "GPL-3.0"
+}
