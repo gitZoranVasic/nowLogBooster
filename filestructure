@@ -1,0 +1,24 @@
+NowLogBooster/
+├── src/
+│   ├── contentScript.tsx *       # Content script entry – scans ServiceNow logs and injects Monaco editor viewers in Message cells.
+│   ├── components/ *            # (Optional) React components used in content script or options.
+│   │   └── JSONViewer.tsx *      # React component wrapping a Monaco Editor for displaying JSON (read-only).
+│   ├── options/ *               # Options page React source
+│   │   ├── OptionsPage.tsx *     # React component for the Options UI (user can configure URL patterns).
+│   │   └── main.tsx *            # Entry point for options page (mounts the OptionsPage component).
+│   ├── popup/ *                # Popup page React source (optional, a simple popup to link to options or info).
+│   │   ├── PopupPage.tsx *       # React component for the popup UI.
+│   │   └── main.tsx *            # Entry point for popup (mounts PopupPage).
+│   └── background.ts *         # (Optional) Background service worker script – for future use (e.g., dynamic injection or other logic).
+├── public/
+│   ├── manifest.json *         # Chrome Extension manifest (V3) describing extension config, permissions, etc.
+│   ├── options.html *          # HTML for the options page (will include the built options script).
+│   ├── popup.html *            # HTML for the popup (will include the built popup script).
+│   ├── icon128.png *           # Extension icon (128x128) – you can also add 16x16, 48x48 versions.
+│   └── ...                     # Other static assets (if any, e.g. logo, CSS).
+├── vite.config.ts *            # Vite configuration for building a Chrome extension (multiple outputs, etc.).
+├── package.json                # NPM package manifest (includes scripts and dependencies).
+├── tsconfig.json               # TypeScript configuration.
+├── .gitignore                  # Git ignore file (should ignore node_modules, dist/, etc. by default).
+├── README.md                   # Documentation for the project (usage, development setup).
+└── LICENSE.txt                 # License for the project (e.g. MIT License).
