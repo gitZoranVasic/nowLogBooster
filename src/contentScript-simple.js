@@ -9,16 +9,26 @@ window.addEventListener('message', (ev) => {
   }
 });
 
-// Prevent multiple initializations
-if (window.nowLogBoosterInitialized) {
-  console.log('NowLogBooster: Already initialized, skipping');
-} else if (!window.location.href.includes('syslog_list.do')) {
-  console.log('NowLogBooster: Not on syslog page, exiting');
-} else {
+const enabledKey = 'nowlogbooster_enabled';
+chrome.storage.sync.get({ [enabledKey]: true }, (res) => {
+  const enabled = !!res[enabledKey];
+  if (!enabled) {
+    console.log('NowLogBooster: Disabled by user setting');
+    return;
+  }
+  // Prevent multiple initializations
+  if (window.nowLogBoosterInitialized) {
+    console.log('NowLogBooster: Already initialized, skipping');
+    return;
+  }
+  if (!window.location.href.includes('syslog_list.do')) {
+    console.log('NowLogBooster: Not on syslog page, exiting');
+    return;
+  }
   console.log('NowLogBooster: On syslog page, initializing...');
   window.nowLogBoosterInitialized = true;
   initNowLogBooster();
-}
+});
 
 function initNowLogBooster() {
   // Add test button first
