@@ -6,6 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "build:extension": "npm run build && npm run copy-files",
+    "copy-files": "cp public/manifest.json dist/ && cp public/*.html dist/ && cp public/*.png dist/ 2>/dev/null || true",
+    "watch": "npm run build:extension && echo '🔄 Initial build complete. Make changes to files and run npm run build:extension to rebuild.'",
     "lint": "eslint .",
     "preview": "vite preview"
   },
@@ -17,7 +20,8 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",
-    "@types/chrome": "^0.1.14",
+    "@types/chrome": "^0.1.16",
+    "@types/node": "^24.6.1",
     "@types/react": "^19.1.13",
     "@types/react-dom": "^19.1.9",
     "@vitejs/plugin-react": "^5.0.3",
