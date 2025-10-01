@@ -2,14 +2,18 @@
   "manifest_version": 3,
   "name": "NowLogBooster",
   "version": "1.0.0",
-  "description": "Enhances ServiceNow syslog_list.do pages with Monaco-powered JSON viewers.",
+  "description": "Enhances ServiceNow syslog_list.do pages by embedding Monaco Editor for JSON logs.",
   "host_permissions": [
-    "*://*.service-now.com/*"
+    "*://*.service-now.com/*",
+    "*://*.servicenow.com/*"
   ],
   "content_scripts": [
     {
-      "matches": ["*://*.service-now.com/*"],
-      "js": ["contentScript.js"],
+      "matches": [
+        "*://*.service-now.com/*",
+        "*://*.servicenow.com/*"
+      ],
+      "js": ["contentScript-simple.js"],
       "run_at": "document_idle",
       "all_frames": true
     }
@@ -17,14 +21,21 @@
   "web_accessible_resources": [
     {
       "resources": [
-        "editor.html",
-        "editor.js",
-        "editor.css",
-        "monaco-config.js",
+        "monaco-page-bundle.js",
+        "*.js",
+        "*.ttf",
+        "*.woff",
+        "*.woff2",
         "monaco/**/*.js",
-        "monaco/**/*.css"
+        "monaco/**/*.css",
+        "monaco/**/*.ttf",
+        "monaco/**/*.woff",
+        "monaco/**/*.woff2"
       ],
-      "matches": ["*://*.service-now.com/*"]
+      "matches": [
+        "*://*.service-now.com/*",
+        "*://*.servicenow.com/*"
+      ]
     }
   ]
 }

@@ -1,11 +1,10 @@
 # NowLogBooster
 
-A minimal ServiceNow helper extension that prettifies JSON log entries with Monaco Editor.
+A minimal Chrome extension that highlights JSON content in ServiceNow syslog pages.
 
 ## Getting started
 
 ```bash
-npm install
 npm run build
 ```
 
@@ -13,6 +12,14 @@ Load the generated `dist/` folder as an unpacked extension in `chrome://extensio
 
 ## How it works
 
-- `src/contentScript.js` finds JSON blobs inside the syslog message column and replaces them with Monaco-powered viewers.
-- `npm run build` copies the content script, the extension assets in `extension/`, and the pre-bundled Monaco files into `dist/`.
-- `extension/editor.html` hosts Monaco Editor in an isolated iframe so it can run without a bundler or React/TypeScript tooling.
+- `src/contentScript.js` finds JSON blobs inside the syslog message column and highlights them with red borders
+- `npm run build` copies the content script and manifest.json into `dist/`
+- No dependencies, no bundlers, no frameworks - just vanilla JavaScript
+
+## Development
+
+1. Make changes to `src/contentScript.js` or `extension/manifest.json`
+2. Run `npm run build`
+3. Reload the extension in `chrome://extensions/`
+4. Test on a ServiceNow syslog page
+
