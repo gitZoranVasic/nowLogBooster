@@ -5,6 +5,7 @@ module.exports = {
   mode: 'production',
   entry: {
     'monaco-page-bundle': path.resolve(__dirname, 'src/monaco-page-entry.js'),
+    'contentScript': path.resolve(__dirname, 'src/contentScript-simple.js'),
   },
   output: {
     path: path.resolve(__dirname, 'build'),

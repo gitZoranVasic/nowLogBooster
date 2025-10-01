@@ -44,10 +44,7 @@ async function main() {
   // 2) Copy all produced webpack assets into dist (bundle + workers + chunks)
   await copyDirectory(webpackBuildDir, distDir);
 
-  // 3) Copy content script 
-  await copyFile(path.join(srcDir, 'contentScript-simple.js'), path.join(distDir, 'contentScript-simple.js'));
-  
-  // 4) Copy extension files (manifest.json)
+  // 3) Copy extension files (manifest.json, popup, etc.)
   await copyDirectory(extensionDir, distDir);
 
   console.log('Build complete. Load the dist/ folder as the extension root.');

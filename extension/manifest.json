@@ -21,7 +21,7 @@
         "*://*.service-now.com/*",
         "*://*.servicenow.com/*"
       ],
-      "js": ["contentScript-simple.js"],
+      "js": ["contentScript.js"],
       "run_at": "document_idle",
       "all_frames": true
     }
