@@ -11,7 +11,7 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        contentScript: path.resolve(__dirname, 'src/contentScript.tsx'),
+        contentScript: path.resolve(__dirname, 'src/contentScript.js'),
         popup: path.resolve(__dirname, 'src/popup/main.tsx'),
         options: path.resolve(__dirname, 'src/options/main.tsx'),
       },
