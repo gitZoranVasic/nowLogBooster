@@ -37,6 +37,7 @@ function initNowLogBooster() {
   // Add test button first
   addTestButton();
   injectPageBundle();
+  setupDynamicObserver();
   
   // Wait for page to load, then enhance
   if (document.readyState === 'loading') {
@@ -112,6 +113,32 @@ async function runEnhancement() {
     console.error('NowLogBooster: Error enhancing columns:', error);
     showNotification('❌ Error enhancing with Monaco', '#cc0000');
   }
+}
+
+// Observe dynamic updates and re-run enhancement with debounce
+function setupDynamicObserver() {
+  if (window.nowLogBoosterObserver) return;
+  let scheduled = false;
+  const debouncedRun = () => {
+    if (scheduled) return;
+    scheduled = true;
+    setTimeout(() => {
+      scheduled = false;
+      try { runEnhancement(); } catch (e) { /* noop */ }
+    }, 600);
+  };
+
+  const observer = new MutationObserver((mutations) => {
+    // Only react if rows or cells are added/changed
+    for (const m of mutations) {
+      if (m.type === 'childList' && (m.addedNodes && m.addedNodes.length)) { debouncedRun(); break; }
+      if (m.type === 'attributes' && m.target && (m.target.matches && m.target.matches('td, tr'))) { debouncedRun(); break; }
+    }
+  });
+  try {
+    observer.observe(document.body, { subtree: true, childList: true, attributes: false });
+    window.nowLogBoosterObserver = observer;
+  } catch {}
 }
 
 function showNotification(message, color) {
