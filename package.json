@@ -1,36 +1,11 @@
 {
   "name": "nowlogbooster",
+  "version": "1.0.0",
   "private": true,
-  "version": "0.0.0",
-  "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "build:extension": "npm run build && npm run copy-files",
-    "copy-files": "cp public/manifest.json dist/ && cp public/*.html dist/ && cp public/*.png dist/ 2>/dev/null || true",
-    "watch": "npm run build:extension && echo '🔄 Initial build complete. Make changes to files and run npm run build:extension to rebuild.'",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "build": "node scripts/build.js"
   },
   "dependencies": {
-    "@monaco-editor/react": "^4.7.0",
-    "monaco-editor": "^0.53.0",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1"
-  },
-  "devDependencies": {
-    "@eslint/js": "^9.36.0",
-    "@types/chrome": "^0.1.16",
-    "@types/node": "^24.6.1",
-    "@types/react": "^19.1.13",
-    "@types/react-dom": "^19.1.9",
-    "@vitejs/plugin-react": "^5.0.3",
-    "eslint": "^9.36.0",
-    "eslint-plugin-react-hooks": "^5.2.0",
-    "eslint-plugin-react-refresh": "^0.4.20",
-    "globals": "^16.4.0",
-    "typescript": "~5.8.3",
-    "typescript-eslint": "^8.44.0",
-    "vite": "^7.1.7"
+    "monaco-editor": "^0.53.0"
   }
 }
